@@ -1,0 +1,22 @@
+.sidebar {
+    background-color: black;
+    grid-row: 1/3;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 225px;
+}
+
+.side-bar__dividing-line {
+    border: solid 1px #b3b3b3;
+    width: 80%;
+    opacity: 0.2;
+}
+
+.side-bar__spotify-logo {
+    margin-top: 5%;
+    min-width: 150px;
+    width: 70%;
+    height: auto;
+}

@@ -1,0 +1,32 @@
+.sidebar__playlists {
+    margin-top: 5%;
+    height: 60%;
+}
+
+.playlists__label {
+    margin-left: 25%;
+    color: #b3b3b3;
+}
+
+.playlists {
+    height: 100%;
+    max-height: 100%;
+    width: 99%;
+    color: white;
+    padding: 0;
+}
+
+.playlists__playlist-item {
+    margin-left: 10%;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.playlist-item_link {
+    text-decoration: none;
+    color: #b3b3b3;
+}
+
+.playlist-item_link:hover {
+    color: white;
+}

@@ -1,0 +1,25 @@
+.play-button__image {
+    transition: all 150ms ease-out;
+    fill: black;
+    width: 25px;
+    height: 25px;
+    margin-left: 2px;
+}
+
+.play-button {
+    display: none;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background-color: limegreen;
+    transition: all 250ms ease-out;
+}
+
+.play-button:hover {
+    background-color: limegreen;
+}
+
+.play-button:hover .play-button__image {
+    fill: white;
+}

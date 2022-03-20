@@ -1,0 +1,35 @@
+.navbar {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.navbar__link {
+    text-decoration: none;
+    margin-bottom: 10%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.navbar__link:hover .navbar__icon {
+    fill: #ffffff;
+}
+
+.navbar__link:hover .navbar__item-name {
+    color: #ffffff;
+}
+
+.navbar__icon {
+    fill: #b3b3b3;
+    margin-right: 5%;
+    height: 24px;
+    width: 24px;
+}
+
+.navbar__item-name {
+    color: #b3b3b3;
+}
+
