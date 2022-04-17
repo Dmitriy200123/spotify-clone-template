@@ -5,10 +5,10 @@ import {observer} from "mobx-react-lite";
 
 let LoginPage = observer(() => {
     return (
-        <div className="login-page">
-            <img className="login-page__spotify-logo" src={SpotifyLogo} alt="login-page__spotify-logo"/>
-            <h1 className='login-page__title'>Услышать весь мир!</h1>
-            <a className='login-page__login-link' href={loginUrl}>Войти</a>
+        <div className="loginPage">
+            <img className="loginPage__spotifyLogo" src={SpotifyLogo} alt="login-page__spotify-logo"/>
+            <h1 className='loginPage__title'>Услышать весь мир!</h1>
+            <a className='loginPage__loginLink' href={loginUrl}>Войти</a>
         </div>
     )
 });

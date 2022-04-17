@@ -6,7 +6,7 @@
     grid-template-rows: 7% 83% 10%;
 }
 
-.page-content {
+.pageContent {
     background: rgb(91, 87, 115) linear-gradient(transparent, rgba(0, 0, 0, 1));
     color: black;
 }

@@ -1,5 +1,3 @@
-import {stringify} from "querystring";
-
 const scopes = [
     'ugc-image-upload',
     'user-read-playback-state',
@@ -22,12 +20,12 @@ const scopes = [
     'playlist-modify-public',
 ];
 
-const queryParams = stringify({
+const queryParams = new URLSearchParams({
     response_type: 'code',
-    client_id: process.env.REACT_APP_CLIENT_ID,
+    client_id: process.env.REACT_APP_CLIENT_ID as string,
     scope: scopes.join(' '),
-    redirect_uri: process.env.REACT_APP_REDIRECT_URL,
-    show_dialog: true
+    redirect_uri: process.env.REACT_APP_REDIRECT_URL as string,
+    show_dialog: true.toString()
 });
 
 const loginUrl = process.env.REACT_APP_BACKEND_URL as string

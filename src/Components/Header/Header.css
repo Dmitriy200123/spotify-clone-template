@@ -5,22 +5,18 @@
     column-gap: 15px;
 }
 
-.previous-page-button {
+.pageNavButton:first-of-type {
     margin-left: 10px;
 }
 
-.page-button:last-of-type {
-    margin-right: auto;
-}
-
-.profile-menu {
+.profileMenu {
     width: 120px;
     height: 65%;
     margin-left: auto;
 }
 
-.logout-button {
+.logoutButton {
     width: 120px;
     height: 65%;
-    margin-right: 2%;
+    margin-right: 10px;
 }

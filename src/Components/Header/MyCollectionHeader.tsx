@@ -1,18 +1,17 @@
 import {observer} from "mobx-react-lite";
-import './MyCollectionHeader.css';
-import PreviousPageButton from "./PageButtons/PreviousPageButton";
-import NextPageButton from "./PageButtons/NextPageButton";
-import PlaylistCollectionPageButton from "./PageButtons/PlaylistCollectionPageButton";
-import AlbumCollectionPageButton from "./PageButtons/AlbumCollectionPageButton";
+import './Header.css';
+import CollectionPageLink from "./PageNavs/CollectionPageLink";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import LogoutButton from "./LogoutButton/LogoutButton";
+import './PageNavs/PageButtonStyle.css';
+import PageNavButton, {PageNavDirection} from "./PageNavs/PageNavButton";
 
 const MyCollectionHeader = observer(() => {
     return <header className="header">
-        <PreviousPageButton/>
-        <NextPageButton/>
-        <PlaylistCollectionPageButton/>
-        <AlbumCollectionPageButton/>
+        <PageNavButton pageNavDirection={PageNavDirection.Previous} label='<'/>
+        <PageNavButton pageNavDirection={PageNavDirection.Next} label='>'/>
+        <CollectionPageLink route='/collection/playlists' text='Плейлисты'/>
+        <CollectionPageLink route='/collection/albums' text='Альбомы'/>
         <ProfileMenu/>
         <LogoutButton/>
     </header>

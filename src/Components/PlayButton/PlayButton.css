@@ -1,4 +1,4 @@
-.play-button__image {
+.playButton__image {
     transition: all 150ms ease-out;
     fill: black;
     width: 25px;
@@ -6,7 +6,7 @@
     margin-left: 2px;
 }
 
-.play-button {
+.playButton {
     display: none;
     width: 60px;
     height: 60px;
@@ -16,10 +16,10 @@
     transition: all 250ms ease-out;
 }
 
-.play-button:hover {
+.playButton:hover {
     background-color: limegreen;
 }
 
-.play-button:hover .play-button__image {
+.playButton:hover .playButton__image {
     fill: white;
 }

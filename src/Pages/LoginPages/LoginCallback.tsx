@@ -1,5 +1,5 @@
 import {useSearchParams, useNavigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import getAuthorizationToken from "../../Authorization/Auth";
 import {observer} from "mobx-react-lite";
 
@@ -10,14 +10,13 @@ const LoginCallback = observer(() => {
     const navigate = useNavigate()
 
     useEffect(() => {
-
         let mounted = true;
         getAuthorizationToken(code).then(token => {
             if (mounted) {
                 setToken(token.access_token)
                 localStorage.setItem('access_token', token.access_token);
                 localStorage.setItem('refresh_token', token.refresh_token);
-                navigate('/');
+                navigate('/', {replace: true});
             }
         })
 
@@ -26,7 +25,7 @@ const LoginCallback = observer(() => {
         }
     }, [code, navigate]);
 
-    return (<></>);
+    return null;
 });
 
 export default LoginCallback;

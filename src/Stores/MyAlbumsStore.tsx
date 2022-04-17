@@ -4,15 +4,15 @@ import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IAlbum} from "./Models/IAlbum";
 
 class MyAlbumsStore {
-    public albums: IAlbum[] = [];
-    public totalCount: number = 0;
-    public offset: number = 0;
-    public needFetching: boolean = false;
-    public isFirstFetching: boolean = true;
+    albums: IAlbum[] = [];
+    totalCount: number = 0;
+    offset: number = 0;
+    needFetching: boolean = false;
+    isFirstFetching: boolean = true;
 
-    public readonly limit: number;
+    readonly limit: number;
 
-    public constructor(limit: number) {
+    constructor(limit: number) {
         this.limit = limit;
         makeObservable(this, {
             albums: observable,
@@ -27,7 +27,7 @@ class MyAlbumsStore {
         })
     }
 
-    public async getAlbums(offset: number) {
+    async getAlbums(offset: number) {
         await AlbumsTransport.getMyAlbums(this.limit, offset).then(albumsInfo => {
             this.setAlbums(albumsInfo.items.map(info => {
                 return {

@@ -21,13 +21,13 @@ const PlaylistNames = observer(() => {
     return (
         <div className='sidebar__playlists'>
             <label className='playlists__label'>Плейлисты</label>
-            <ul className='playlists scroll vertical-scroll'
+            <ul className='playlists scroll verticalScroll'
                 onScroll={onScroll}>
                 {
                     MyPlaylistsStoreImpl.currentUserPlaylists.map(playlist =>
-                        <li key={playlist.id} className='playlists__playlist-item'><Link className='playlist-item_link'
-                                                                                         to={`/collection/playlists/${playlist.id}`}
-                                                                                         replace={true}>{playlist.name}</Link>
+                        <li key={playlist.id} className='playlists__playlistItem'><Link className='playlist__itemLink'
+                                                                                        to={`/collection/playlists/${playlist.id}`}
+                                                                                        replace={true}>{playlist.name}</Link>
                         </li>)}
             </ul>
         </div>

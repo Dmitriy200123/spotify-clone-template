@@ -1,5 +1,3 @@
-import {stringify} from "querystring";
-
 export class Transport {
     private static Url = 'https://api.spotify.com/v1';
 
@@ -31,7 +29,7 @@ export class Transport {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('access_token') as string}`
             },
-            body: stringify(body)
+            body: new URLSearchParams(body)
         };
 
         return fetch(this.Url + url, request).then(response => {

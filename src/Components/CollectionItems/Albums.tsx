@@ -19,16 +19,16 @@ const Albums = observer(() => {
     };
 
     return <div
-        className='collection-albums scroll vertical-scroll'
+        className='collection-albums scroll verticalScroll'
         onScroll={onScroll}>
         {
             MyAlbumsStoreImpl.albums.map(album => {
-                return <div className='collection-albums__album-item' key={album.id}>
-                    <img className='album-item__image' src={album.imageUrl} alt='albumImage'/>
+                return <div className='collection-albums__albumItem' key={album.id}>
+                    <img className='albumItem__image' src={album.imageUrl} alt='albumImage'/>
                     <PlayButton/>
-                    <label className='album-item__name'>{album.name}</label>
+                    <label className='albumItem__name'>{album.name}</label>
                     <label
-                        className='album-item__author-name'>{album.artists.map(artist => artist.name).join('&')}</label>
+                        className='albumItem__authorName'>{album.artists.map(artist => artist.name).join('&')}</label>
                 </div>
             })
         }

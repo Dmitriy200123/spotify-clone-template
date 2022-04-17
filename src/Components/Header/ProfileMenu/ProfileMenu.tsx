@@ -7,10 +7,10 @@ const ProfileMenu = observer(() => {
     useEffect(() => MyInfoStoreImpl.getCurrentUserInfo(), []);
 
     return <>
-        <div className='profile-menu'>
-            <div className='profile-menu__profile-info'>
-                <img src={MyInfoStoreImpl.currentUser.image} className='profile-info__user-image' alt='userImage'/>
-                <p className='profile-info__user-name'>{MyInfoStoreImpl.currentUser.name}</p>
+        <div className='profileMenu'>
+            <div className='profileMenu__profileInfo'>
+                <img src={MyInfoStoreImpl.currentUser.image} className='profileInfo__userImage' alt='userImage'/>
+                <p className='profileInfo__userName'>{MyInfoStoreImpl.currentUser.name}</p>
             </div>
         </div>
     </>

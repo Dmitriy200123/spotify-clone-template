@@ -1,3 +1,5 @@
+import {IImage} from "../Images/IImage";
+
 export interface ISpotifyUserInfo {
     id: string,
     display_name: string,
@@ -5,7 +7,5 @@ export interface ISpotifyUserInfo {
     followers: {
         total: number
     },
-    images: {
-        url: string
-    }[]
+    images: IImage[]
 }

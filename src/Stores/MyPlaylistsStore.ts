@@ -4,15 +4,15 @@ import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IPlaylist} from "./Models/IPlaylist";
 
 class MyPlaylistsStore {
-    public currentUserPlaylists: IPlaylist[] = [];
-    public totalCount: number = 0;
-    public offset: number = 0;
-    public needFetching: boolean = false;
-    public isFirstFetching: boolean = true;
+    currentUserPlaylists: IPlaylist[] = [];
+    totalCount: number = 0;
+    offset: number = 0;
+    needFetching: boolean = false;
+    isFirstFetching: boolean = true;
 
-    public readonly limit: number;
+    readonly limit: number;
 
-    public constructor(limit: number) {
+    constructor(limit: number) {
         this.limit = limit;
         makeObservable(this, {
             currentUserPlaylists: observable,
@@ -27,7 +27,7 @@ class MyPlaylistsStore {
         })
     }
 
-    public async getCurrentUserPlaylists(offset: number) {
+    async getCurrentUserPlaylists(offset: number) {
         await PlaylistsTransport.getCurrentUserPlaylists(this.limit, offset).then(playlists => {
             this.setCurrentUserPlaylists(playlists.items.map(item => ({
                 id: item.id,
@@ -50,11 +50,11 @@ class MyPlaylistsStore {
         });
     }
 
-    public setCurrentUserPlaylists(newPlaylists: IPlaylist[]) {
+    setCurrentUserPlaylists(newPlaylists: IPlaylist[]) {
         this.currentUserPlaylists = [...this.currentUserPlaylists, ...newPlaylists];
     }
 
-    public setFetching(value: boolean) {
+    setFetching(value: boolean) {
         this.needFetching = value;
     }
 

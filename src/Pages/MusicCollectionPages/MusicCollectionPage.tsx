@@ -13,13 +13,13 @@ const MusicCollectionPage = observer((props: IMusicCollectionPageProps) => {
     return <div className='page music-collection-page'>
         <MyCollectionHeader/>
         <SideBar/>
-        <main className='page-content music-collection-content'>
+        <main className='pageContent music-collection-content'>
             {props.collectionType === CollectionType.Albums && <>
-                <h1 className='music-collection-content__title'>Альбомы</h1>
+                <h1 className='musicCollectionContent__title'>Альбомы</h1>
                 <Albums/>
             </>}
             {props.collectionType === CollectionType.Playlists && <>
-                <h1 className='music-collection-content__title'>Плейлисты</h1>
+                <h1 className='musicCollectionContent__title'>Плейлисты</h1>
                 <Playlists/>
             </>}
         </main>

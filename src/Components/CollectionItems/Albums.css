@@ -4,12 +4,12 @@
     width: 100%;
     max-width: 1550px;
     height: 560px;
-    margin-left: 3%;
+    margin-left: 50px;
     gap: 20px;
     column-gap: 20px;
 }
 
-.collection-albums__album-item {
+.collection-albums__albumItem {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 8fr 1fr 1fr;
@@ -23,11 +23,11 @@
     border-radius: 10px;
 }
 
-.collection-albums__album-item:hover {
+.collection-albums__albumItem:hover {
     background-color: #231b1b;
 }
 
-.album-item__image {
+.albumItem__image {
     align-self: center;
     width: 175px;
     height: 175px;
@@ -36,19 +36,19 @@
     grid-column: 1/2;
 }
 
-.play-button {
+.playButton {
     align-self: center;
     grid-row: 1/2;
     grid-column: 1/2;
 }
 
-.collection-albums__album-item:hover .play-button {
+.collection-albums__albumItem:hover .playButton {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.album-item__name {
+.albumItem__name {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;
@@ -60,7 +60,7 @@
     grid-column: 1/2;
 }
 
-.album-item__author-name {
+.albumItem__authorName {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;

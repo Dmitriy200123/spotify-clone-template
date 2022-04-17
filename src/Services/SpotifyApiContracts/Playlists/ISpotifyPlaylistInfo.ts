@@ -1,10 +1,11 @@
 import {ISpotifyOwner} from "../Owners/ISpotifyOwner";
+import {IImage} from "../Images/IImage";
 
 export interface ISpotifyPlaylistInfo {
     id: string,
     collaborative: boolean,
     description: string,
-    images: { url: string }[],
+    images: IImage[],
     name: string,
     owner: ISpotifyOwner,
     public: boolean,

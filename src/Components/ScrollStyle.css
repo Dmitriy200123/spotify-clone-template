@@ -1,18 +1,18 @@
-.horizontal-scroll {
+.horizontalScroll {
     overflow-x: auto;
     overflow-y: hidden;
 }
 
-.vertical-scroll {
+.verticalScroll {
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
+.horizontalScroll::-webkit-scrollbar {
     height: 10px
 }
 
-.vertical-scroll::-webkit-scrollbar {
+.verticalScroll::-webkit-scrollbar {
     width: 10px;
 }
 

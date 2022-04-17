@@ -3,13 +3,13 @@ import {UsersTransport} from "../Services/UsersTransport";
 import {IUser} from "./Models/IUser";
 
 class MyInfoStore {
-    public currentUser: IUser = {
+    currentUser: IUser = {
         id: '',
         name: '',
         image: ''
     };
 
-    public constructor() {
+    constructor() {
         makeObservable(this, {
             currentUser: observable,
             getCurrentUserInfo: action,
@@ -17,7 +17,7 @@ class MyInfoStore {
         });
     }
 
-    public getCurrentUserInfo() {
+    getCurrentUserInfo() {
         UsersTransport.getCurrentUser().then(userInfo => this.setCurrenUser({
             id: userInfo.id,
             name: userInfo.display_name,
@@ -25,7 +25,7 @@ class MyInfoStore {
         }))
     }
 
-    public setCurrenUser(user: IUser) {
+    setCurrenUser(user: IUser) {
         this.currentUser = user;
     }
 }

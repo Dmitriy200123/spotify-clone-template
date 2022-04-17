@@ -7,9 +7,9 @@ import {observer} from "mobx-react-lite";
 let SideBar = observer(() => {
     return (
         <aside className="sidebar">
-            <img src={SpotifyLogo} className="side-bar__spotify-logo" alt="spotify_logo"/>
+            <img src={SpotifyLogo} className="sideBar__spotifyLogo" alt="spotify_logo"/>
             <Navbar/>
-            <hr className="side-bar__dividing-line"/>
+            <hr className="sideBar__dividingLine"/>
             <PlaylistNames/>
         </aside>
     )

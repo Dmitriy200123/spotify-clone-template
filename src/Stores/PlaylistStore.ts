@@ -5,7 +5,7 @@ import {IPlaylist} from "./Models/IPlaylist";
 import {ITrackInfo} from "./Models/ITrackInfo";
 
 export class PlaylistStore {
-    public playlist: IPlaylist = {
+    playlist: IPlaylist = {
         id: '',
         isCollaborative: false,
         description: '',
@@ -18,13 +18,13 @@ export class PlaylistStore {
         isPublic: false,
         followersCount: 0
     };
-    public tracks: ITrackInfo[] = [];
-    public readonly limit: number;
-    public totalCount: number = 0;
-    public needFetching: boolean = true;
-    public offset: number = 0;
+    tracks: ITrackInfo[] = [];
+    readonly limit: number;
+    totalCount: number = 0;
+    needFetching: boolean = true;
+    offset: number = 0;
 
-    public constructor(limit: number) {
+    constructor(limit: number) {
         this.limit = limit;
         makeObservable(this, {
             playlist: observable,
@@ -41,7 +41,7 @@ export class PlaylistStore {
         })
     }
 
-    public getPlaylist(id: string) {
+    getPlaylist(id: string) {
         PlaylistsTransport.getPlaylist(id).then(info => this.setPlaylist({
             id: info.id,
             name: info.name,
@@ -61,7 +61,7 @@ export class PlaylistStore {
         this.playlist = playlist;
     }
 
-    public async getTracks(playlistId: string, offset: number) {
+    async getTracks(playlistId: string, offset: number) {
         await PlaylistsTransport.getPlaylistTracks(playlistId, this.limit, offset).then(info => {
             this.setTracks(info.items.map(track => ({
                 id: track.track.id,

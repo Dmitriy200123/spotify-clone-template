@@ -19,15 +19,15 @@ const Playlists = observer(() => {
     };
 
     return <div
-        className='collection-playlists scroll vertical-scroll'
+        className='collection-playlists scroll verticalScroll'
         onScroll={onScroll}>
         {
             MyPlaylistsStoreImpl.currentUserPlaylists.map(playlist => {
-                return <div className='collection-playlists__playlist-item' key={playlist.id}>
-                    <img className='playlist-item__image' src={playlist.imageUrl} alt='trackImage'/>
+                return <div className='collection-playlists__playlistItem' key={playlist.id}>
+                    <img className='playlistItem__image' src={playlist.imageUrl} alt='trackImage'/>
                     <PlayButton/>
-                    <label className='playlist-item__name'>{playlist.name}</label>
-                    <label className='playlist-item__author-name'>{'Автор: ' + playlist.owner.name}</label>
+                    <label className='playlistItem__name'>{playlist.name}</label>
+                    <label className='playlistItem__authorName'>{'Автор: ' + playlist.owner.name}</label>
                 </div>
             })
         }

@@ -11,9 +11,9 @@ const MainPage = observer(() => {
         <div className="page main-page">
             <Header/>
             <SideBar/>
-            <main className="page-content main-content">
-                <h1 className='main-content__title'>Наслаждаться музыкой!</h1>
-                <h2 className='main-content__title2'>На повторе</h2>
+            <main className="pageContent main-content">
+                <h1 className='mainContent__title'>Наслаждаться музыкой!</h1>
+                <h2 className='mainContent__title2'>На повторе</h2>
                 <TopTrackList/>
             </main>
             <Footer/>

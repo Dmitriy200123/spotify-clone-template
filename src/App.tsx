@@ -8,10 +8,8 @@ import AuthCheck from "./Components/AuthCheck/AuthCheck";
 import PlaylistPage from "./Pages/PlaylistPage/PlaylistPage";
 import MusicCollectionPage from "./Pages/MusicCollectionPages/MusicCollectionPage";
 import {CollectionType} from "./Pages/MusicCollectionPages/CollectionType";
-import {observer} from "mobx-react-lite";
 
-const App = observer(() => {
-
+const App = () => {
     return (
         <Router>
             <div className="App">
@@ -30,6 +28,6 @@ const App = observer(() => {
             </div>
         </Router>
     );
-});
+};
 
 export default App;

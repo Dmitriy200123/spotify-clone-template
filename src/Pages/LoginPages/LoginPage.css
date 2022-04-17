@@ -1,4 +1,4 @@
-.login-page {
+.loginPage {
     background-color: black;
     height: 100vh;
     width: 100vw;
@@ -6,25 +6,25 @@
     flex-direction: column;
 }
 
-.login-page__spotify-logo {
+.loginPage__spotifyLogo {
     width: 30%;
     height: auto;
     align-self: flex-end;
 }
 
-.login-page__title {
+.loginPage__title {
     color: limegreen;
     font-size: 80px;
     align-self: center;
 }
 
-.login-page__login-link {
+.loginPage__loginLink {
     color: #b3b3b3;
     font-size: 35px;
     align-self: center;
     text-decoration: none;
 }
 
-.login-page__login-link:hover {
+.loginPage__loginLink:hover {
     color: white;
 }

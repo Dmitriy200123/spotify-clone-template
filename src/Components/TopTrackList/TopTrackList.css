@@ -1,11 +1,11 @@
-.top-track-list {
+.topTrackList {
     display: flex;
     max-width: 1525px;
     height: 290px;
-    margin-left: 3%;
+    margin-left: 50px;
 }
 
-.top-track-list__track-list-item {
+.topTrackList__trackListItem {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 5fr 1fr;
@@ -20,11 +20,11 @@
     border-radius: 10px;
 }
 
-.top-track-list__track-list-item:hover {
+.topTrackList__trackListItem:hover {
     background-color: #231b1b;
 }
 
-.track-list-item__image {
+.trackListItem__image {
     align-self: center;
     width: 175px;
     height: 175px;
@@ -33,19 +33,19 @@
     grid-column: 1/2;
 }
 
-.play-button {
+.playButton {
     align-self: center;
     grid-row: 1/2;
     grid-column: 1/2;
 }
 
-.top-track-list__track-list-item:hover .play-button {
+.topTrackList__trackListItem:hover .playButton {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.track-list-item__name {
+.trackListItem__name {
     text-align: center;
     color: #e2dfdf;
     align-self: stretch;

@@ -20,14 +20,14 @@ const TopTrackList = observer(() => {
 
     return (
         <div
-            className='top-track-list scroll horizontal-scroll'
+            className='topTrackList scroll horizontalScroll'
             onScroll={onScroll}>
             {
                 MyTopItemsStoreImpl.currentUserTopTracks.map(track => {
-                    return <div className='top-track-list__track-list-item' key={track.id}>
-                        <img className='track-list-item__image' src={track.imageUrl} alt='trackImage'/>
+                    return <div className='topTrackList__trackListItem' key={track.id}>
+                        <img className='trackListItem__image' src={track.imageUrl} alt='trackImage'/>
                         <PlayButton/>
-                        <label className='track-list-item__name'>{track.name}</label>
+                        <label className='trackListItem__name'>{track.name}</label>
                     </div>
                 })
             }

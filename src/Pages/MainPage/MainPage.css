@@ -1,12 +1,14 @@
-.main-content__title {
-    margin-top: 4%;
-    margin-left: 3%;
+.mainContent__title, .mainContent__title2{
     color: #e2dfdf;
 }
 
-.main-content__title2{
-    margin-top: 2%;
-    margin-bottom: 2%;
-    margin-left: 3%;
-    color: #e2dfdf;
+.mainContent__title {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.mainContent__title2{
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }

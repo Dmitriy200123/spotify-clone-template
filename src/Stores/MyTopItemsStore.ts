@@ -3,15 +3,15 @@ import {UsersTransport} from "../Services/UsersTransport";
 import {ITrackInfo} from "./Models/ITrackInfo";
 
 class MyTopItemsStore {
-    public currentUserTopTracks: ITrackInfo[] = [];
-    public totalCount: number = 0;
-    public offset: number = 0;
-    public needFetching: boolean = false;
-    public isFirstFetching: boolean = true;
+    currentUserTopTracks: ITrackInfo[] = [];
+    totalCount: number = 0;
+    offset: number = 0;
+    needFetching: boolean = false;
+    isFirstFetching: boolean = true;
 
-    public readonly limit: number;
+    readonly limit: number;
 
-    public constructor(limit: number) {
+    constructor(limit: number) {
         this.limit = limit;
         makeObservable(this, {
             currentUserTopTracks: observable,
@@ -26,7 +26,7 @@ class MyTopItemsStore {
         })
     }
 
-    public async getCurrentUserTopTracks(offset: number) {
+    async getCurrentUserTopTracks(offset: number) {
         await UsersTransport.getCurrentUserTopTracks(this.limit, offset).then(tracksInfo => {
             this.setCurrenUserTopTracks(tracksInfo.items.map(info => ({
                 id: info.id,

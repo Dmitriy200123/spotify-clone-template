@@ -7,11 +7,11 @@ const LogoutButton = observer(() => {
 
     function logout() {
         localStorage.removeItem('access_token');
-        navigate('/login');
+        navigate('/login', {replace: true});
     }
 
-    return <button className='logout-button' onClick={logout}><label
-        className='logout-button__name'>Выйти</label></button>;
+    return <button className='logoutButton' onClick={logout}><label
+        className='logoutButton__name'>Выйти</label></button>;
 });
 
 export default LogoutButton;
