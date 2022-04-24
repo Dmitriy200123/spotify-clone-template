@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import './Navbar.css';
 import {observer} from "mobx-react-lite";
 
-let Navbar = observer(() => {
+export const Navbar = observer(() => {
     return (
         <div className="navbar">
             <Link to="/" className="navbar__link navbar__main-link">
@@ -31,5 +31,3 @@ let Navbar = observer(() => {
         </div>
     )
 });
-
-export default Navbar;

@@ -28,7 +28,5 @@ const queryParams = new URLSearchParams({
     show_dialog: true.toString()
 });
 
-const loginUrl = process.env.REACT_APP_BACKEND_URL as string
+export const loginUrl = process.env.REACT_APP_BACKEND_URL as string
     + `/authorize?${queryParams}`;
-
-export default loginUrl;

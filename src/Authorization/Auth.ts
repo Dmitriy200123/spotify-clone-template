@@ -1,9 +1,9 @@
 import {TokenInfo} from "./TokenInfo";
 
 const url = 'https://accounts.spotify.com/api/token'
-let authSecret = window.btoa(process.env.REACT_APP_CLIENT_ID as string + ':' + process.env.REACT_APP_CLIENT_SECRET as string);
+const authSecret = window.btoa(process.env.REACT_APP_CLIENT_ID as string + ':' + process.env.REACT_APP_CLIENT_SECRET as string);
 
-let getAuthorizationToken = (authCode: string): Promise<TokenInfo> => {
+export const getAuthorizationToken = (authCode: string): Promise<TokenInfo> => {
     return fetch(url, {
         method: 'POST',
         headers: {
@@ -20,5 +20,3 @@ let getAuthorizationToken = (authCode: string): Promise<TokenInfo> => {
             return json as TokenInfo
         }) : Promise.reject(r));
 };
-
-export default getAuthorizationToken;

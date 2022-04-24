@@ -1,10 +1,10 @@
-import Navbar from "../Navbar/Navbar";
-import PlaylistNames from "../PlaylistNames/PlaylistNames";
+import {Navbar} from "../Navbar/Navbar";
+import {PlaylistNames} from "../PlaylistNames/PlaylistNames";
 import "./SideBar.css";
 import SpotifyLogo from "./spotify-logo.svg"
 import {observer} from "mobx-react-lite";
 
-let SideBar = observer(() => {
+export const SideBar = observer(() => {
     return (
         <aside className="sidebar">
             <img src={SpotifyLogo} className="sideBar__spotifyLogo" alt="spotify_logo"/>
@@ -14,5 +14,3 @@ let SideBar = observer(() => {
         </aside>
     )
 });
-
-export default SideBar;

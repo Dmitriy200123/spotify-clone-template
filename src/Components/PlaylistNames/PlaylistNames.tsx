@@ -1,11 +1,11 @@
 import {observer} from "mobx-react-lite";
-import MyPlaylistsStoreImpl from "../../Stores/MyPlaylistsStore";
+import {MyPlaylistsStoreImpl} from "../../Stores/MyPlaylistsStore";
 import React from "react";
 import {Link} from "react-router-dom";
 import './PlaylistNames.css';
 import '../ScrollStyle.css';
 
-const PlaylistNames = observer(() => {
+export const PlaylistNames = observer(() => {
     if (MyPlaylistsStoreImpl.isFirstFetching) {
         MyPlaylistsStoreImpl.setFetching(true);
         MyPlaylistsStoreImpl.isFirstFetching = false;
@@ -33,5 +33,3 @@ const PlaylistNames = observer(() => {
         </div>
     )
 });
-
-export default PlaylistNames;

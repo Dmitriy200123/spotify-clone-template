@@ -1,4 +1,4 @@
-.collection-albums {
+.collectionItems {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -9,7 +9,7 @@
     column-gap: 20px;
 }
 
-.collection-albums__albumItem {
+.collectionItems__collectionItem {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 8fr 1fr 1fr;
@@ -23,11 +23,11 @@
     border-radius: 10px;
 }
 
-.collection-albums__albumItem:hover {
+.collectionItems__collectionItem:hover {
     background-color: #231b1b;
 }
 
-.albumItem__image {
+.collectionItem__image {
     align-self: center;
     width: 175px;
     height: 175px;
@@ -42,13 +42,13 @@
     grid-column: 1/2;
 }
 
-.collection-albums__albumItem:hover .playButton {
+.collectionItems__collectionItem:hover .playButton {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.albumItem__name {
+.collectionItem__name {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;
@@ -60,7 +60,7 @@
     grid-column: 1/2;
 }
 
-.albumItem__authorName {
+.collectionItem__authorName {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;

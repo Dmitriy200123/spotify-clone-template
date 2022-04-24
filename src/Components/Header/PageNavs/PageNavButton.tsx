@@ -13,7 +13,7 @@ export interface IPageNavButtonProps {
     label: string,
 }
 
-const PageNavButton = observer((props: IPageNavButtonProps) => {
+export const PageNavButton = observer((props: IPageNavButtonProps) => {
     const navigate = useNavigate();
 
     function goToPage(pageNavDirection: PageNavDirection) {
@@ -23,5 +23,3 @@ const PageNavButton = observer((props: IPageNavButtonProps) => {
     return <button onClick={() => goToPage(props.pageNavDirection)} className='pageNavButton'><label
         className='pageNavButton__label'>{props.label}</label></button>;
 });
-
-export default PageNavButton;

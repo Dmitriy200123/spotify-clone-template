@@ -1,9 +1,9 @@
-import loginUrl from '../../Authorization/LoginUrl';
+import {loginUrl} from '../../Authorization/LoginUrl';
 import SpotifyLogo from './spotify-logo.svg';
 import './LoginPage.css';
 import {observer} from "mobx-react-lite";
 
-let LoginPage = observer(() => {
+export const LoginPage = observer(() => {
     return (
         <div className="loginPage">
             <img className="loginPage__spotifyLogo" src={SpotifyLogo} alt="login-page__spotify-logo"/>
@@ -12,5 +12,3 @@ let LoginPage = observer(() => {
         </div>
     )
 });
-
-export default LoginPage;

@@ -1,10 +1,10 @@
-import Header from "../../Components/Header/Header";
-import SideBar from "../../Components/Sidebar/SideBar";
-import Footer from "../../Components/Footer/Footer";
+import {Header} from "../../Components/Header/Header";
+import {SideBar} from "../../Components/Sidebar/SideBar";
+import {Footer} from "../../Components/Footer/Footer";
 import React from "react";
 import {observer} from "mobx-react-lite";
 
-const AlbumPage = observer(() => {
+export const AlbumPage = observer(() => {
     // todo
     return (
         <>
@@ -30,5 +30,3 @@ const AlbumPage = observer(() => {
         </>
     )
 });
-
-export default AlbumPage;

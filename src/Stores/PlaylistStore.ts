@@ -102,6 +102,4 @@ export class PlaylistStore {
     }
 }
 
-const PlaylistStoreImpl = new PlaylistStore(2);
-
-export default PlaylistStoreImpl;
+export const PlaylistStoreImpl = new PlaylistStore(2);

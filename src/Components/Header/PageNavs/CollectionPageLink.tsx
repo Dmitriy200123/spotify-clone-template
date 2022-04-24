@@ -8,9 +8,7 @@ export interface ICollectionPageLinkProps {
     text: string,
 }
 
-const CollectionPageLink = observer((props: ICollectionPageLinkProps) => {
+export const CollectionPageLink = observer((props: ICollectionPageLinkProps) => {
     return <NavLink to={props.route}
                     className={({isActive}) => isActive ? 'collectionNavItem currentPage-visible' : 'collectionNavItem'}>{props.text}</NavLink>;
 });
-
-export default CollectionPageLink;

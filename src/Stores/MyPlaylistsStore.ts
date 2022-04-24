@@ -67,11 +67,9 @@ class MyPlaylistsStore {
     }
 }
 
-const MyPlaylistsStoreImpl = new MyPlaylistsStore(8);
+export const MyPlaylistsStoreImpl = new MyPlaylistsStore(8);
 
 autorun(() => {
     if (MyPlaylistsStoreImpl.needFetching)
         MyPlaylistsStoreImpl.getCurrentUserPlaylists(MyPlaylistsStoreImpl.offset).finally(() => MyPlaylistsStoreImpl.setFetching(false));
 });
-
-export default MyPlaylistsStoreImpl;

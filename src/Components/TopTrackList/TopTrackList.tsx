@@ -1,11 +1,11 @@
 import {observer} from "mobx-react-lite";
 import React from "react";
-import MyTopItemsStoreImpl from "../../Stores/MyTopItemsStore";
+import {MyTopItemsStoreImpl} from "../../Stores/MyTopItemsStore";
 import './TopTrackList.css';
 import '../ScrollStyle.css';
-import PlayButton from "../PlayButton/PlayButton";
+import {PlayButton} from "../PlayButton/PlayButton";
 
-const TopTrackList = observer(() => {
+export const TopTrackList = observer(() => {
     if (MyTopItemsStoreImpl.isFirstFetching) {
         MyTopItemsStoreImpl.setFetching(true);
         MyTopItemsStoreImpl.isFirstFetching = false;
@@ -34,5 +34,3 @@ const TopTrackList = observer(() => {
         </div>
     )
 });
-
-export default TopTrackList;

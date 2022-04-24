@@ -1,15 +1,15 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import "./App.css"
-import MainPage from "./Pages/MainPage/MainPage";
-import LoginPage from "./Pages/LoginPages/LoginPage";
-import LoginCallback from "./Pages/LoginPages/LoginCallback";
-import AuthCheck from "./Components/AuthCheck/AuthCheck";
-import PlaylistPage from "./Pages/PlaylistPage/PlaylistPage";
-import MusicCollectionPage from "./Pages/MusicCollectionPages/MusicCollectionPage";
+import {MainPage} from "./Pages/MainPage/MainPage";
+import {LoginPage} from "./Pages/LoginPages/LoginPage";
+import {LoginCallback} from "./Pages/LoginPages/LoginCallback";
+import {AuthCheck} from "./Components/AuthCheck/AuthCheck";
+import {PlaylistPage} from "./Pages/PlaylistPage/PlaylistPage";
+import {MusicCollectionPage} from "./Pages/MusicCollectionPages/MusicCollectionPage";
 import {CollectionType} from "./Pages/MusicCollectionPages/CollectionType";
 
-const App = () => {
+export const App = () => {
     return (
         <Router>
             <div className="App">
@@ -29,5 +29,3 @@ const App = () => {
         </Router>
     );
 };
-
-export default App;

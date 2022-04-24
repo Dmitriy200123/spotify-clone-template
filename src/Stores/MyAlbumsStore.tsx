@@ -65,12 +65,10 @@ class MyAlbumsStore {
     }
 }
 
-const MyAlbumsStoreImpl = new MyAlbumsStore(8);
+export const MyAlbumsStoreImpl = new MyAlbumsStore(8);
 
 autorun(() => {
     if (MyAlbumsStoreImpl.needFetching) {
         MyAlbumsStoreImpl.getAlbums(MyAlbumsStoreImpl.offset).finally(() => MyAlbumsStoreImpl.setFetching(false));
     }
 });
-
-export default MyAlbumsStoreImpl;

@@ -1,9 +1,9 @@
 import {useSearchParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import getAuthorizationToken from "../../Authorization/Auth";
+import {getAuthorizationToken} from "../../Authorization/Auth";
 import {observer} from "mobx-react-lite";
 
-const LoginCallback = observer(() => {
+export const LoginCallback = observer(() => {
     const [, setToken] = useState('');
     const [searchParams] = useSearchParams();
     const code = searchParams.get('code') as string;
@@ -27,5 +27,3 @@ const LoginCallback = observer(() => {
 
     return null;
 });
-
-export default LoginCallback;

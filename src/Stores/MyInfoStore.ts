@@ -30,5 +30,4 @@ class MyInfoStore {
     }
 }
 
-const MyInfoStoreImpl = new MyInfoStore();
-export default MyInfoStoreImpl;
+export const MyInfoStoreImpl = new MyInfoStore();

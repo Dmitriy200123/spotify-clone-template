@@ -1,14 +1,14 @@
-import Header from "../../Components/Header/Header";
-import SideBar from "../../Components/Sidebar/SideBar";
-import Footer from "../../Components/Footer/Footer";
+import {Header} from "../../Components/Header/Header";
+import {SideBar} from "../../Components/Sidebar/SideBar";
+import {Footer} from "../../Components/Footer/Footer";
 import React, {useEffect} from 'react';
 import {autorun} from "mobx";
 import {useParams} from "react-router-dom";
-import PlaylistStoreImpl from "../../Stores/PlaylistStore";
+import {PlaylistStoreImpl} from "../../Stores/PlaylistStore";
 import './PlaylistPage.css'
 import {observer} from 'mobx-react-lite';
 
-const PlaylistPage = observer(() => {
+export const PlaylistPage = observer(() => {
     // const {id} = useParams();
     // useEffect(() => {
     //     PlaylistStoreImpl.reset();
@@ -61,5 +61,3 @@ const PlaylistPage = observer(() => {
     // todo
     return <></>
 });
-
-export default PlaylistPage;

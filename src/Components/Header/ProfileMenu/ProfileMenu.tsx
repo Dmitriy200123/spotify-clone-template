@@ -1,9 +1,9 @@
-import MyInfoStoreImpl from "../../../Stores/MyInfoStore";
+import {MyInfoStoreImpl} from "../../../Stores/MyInfoStore";
 import './ProfileMenu.css';
 import {observer} from "mobx-react-lite";
 import {useEffect} from "react";
 
-const ProfileMenu = observer(() => {
+export const ProfileMenu = observer(() => {
     useEffect(() => MyInfoStoreImpl.getCurrentUserInfo(), []);
 
     return <>
@@ -15,5 +15,3 @@ const ProfileMenu = observer(() => {
         </div>
     </>
 });
-
-export default ProfileMenu;

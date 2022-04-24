@@ -57,7 +57,7 @@ class MyTopItemsStore {
     }
 }
 
-const MyTopItemsStoreImpl = new MyTopItemsStore(10);
+export const MyTopItemsStoreImpl = new MyTopItemsStore(10);
 
 autorun(() => {
     if (MyTopItemsStoreImpl.needFetching) {
@@ -66,5 +66,3 @@ autorun(() => {
         })
     }
 });
-
-export default MyTopItemsStoreImpl;
