@@ -10,7 +10,7 @@ export const SideBar = observer(() => {
             <img src={SpotifyLogo} className="sideBar__spotifyLogo" alt="spotify_logo"/>
             <Navbar/>
             <hr className="sideBar__dividingLine"/>
-            <PlaylistNames/>
+            <PlaylistNames />
         </aside>
     )
 });

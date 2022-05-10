@@ -1,12 +1,11 @@
 import {SideBar} from '../../Components/Sidebar/SideBar';
 import {Footer} from '../../Components/Footer/Footer';
-import '../PageCommonStyle.css';
+import '../../CommonStyles/PageCommonStyle.css';
 import './MainPage.css';
 import {TopTrackList} from '../../Components/TopTrackList/TopTrackList';
 import {Header} from "../../Components/Header/Header";
-import {observer} from "mobx-react-lite";
 
-export const MainPage = observer(() => {
+export const MainPage = () => {
     return (
         <div className="page">
             <Header/>
@@ -19,4 +18,4 @@ export const MainPage = observer(() => {
             <Footer/>
         </div>
     )
-});
+};

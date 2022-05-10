@@ -3,32 +3,47 @@ import {AlbumsTransport} from "../Services/AlbumsTransport";
 import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IAlbum} from "./Models/IAlbum";
 
-class MyAlbumsStore {
+export class MyAlbumsStore {
+    private static _instance: MyAlbumsStore;
+
     albums: IAlbum[] = [];
     totalCount: number = 0;
     offset: number = 0;
-    needFetching: boolean = false;
-    isFirstFetching: boolean = true;
+    needFetching: boolean = true;
 
     readonly limit: number;
 
     constructor(limit: number) {
         this.limit = limit;
+
         makeObservable(this, {
             albums: observable,
-            totalCount: observable,
             offset: observable,
             needFetching: observable,
             getAlbums: action,
             setAlbums: action,
             setFetching: action,
-            setOffset: action,
-            setTotal: action,
-        })
+            increaseOffset: action
+        });
+
+        autorun(() => {
+            if (this.needFetching && this.offset <= this.totalCount) {
+                this.getAlbums().finally(() => {
+                    this.setFetching(false);
+                    this.increaseOffset();
+                })
+            }
+        });
     }
 
-    async getAlbums(offset: number) {
-        await AlbumsTransport.getMyAlbums(this.limit, offset).then(albumsInfo => {
+    static get instance() {
+        if (!this._instance)
+            this._instance = new MyAlbumsStore(8);
+        return this._instance;
+    }
+
+    async getAlbums() {
+        await AlbumsTransport.getMyAlbums(this.limit, this.offset).then(albumsInfo => {
             this.setAlbums(albumsInfo.items.map(info => {
                 return {
                     id: info.album.id,
@@ -41,9 +56,8 @@ class MyAlbumsStore {
                         }))
                 }
             }));
-            if (albumsInfo.next != null) {
+            if (albumsInfo.previous === null) {
                 this.setTotal(albumsInfo.total);
-                this.setOffset(offset + this.limit);
             }
         })
     }
@@ -60,15 +74,9 @@ class MyAlbumsStore {
         this.totalCount = total;
     }
 
-    setOffset(offset: number) {
-        this.offset = offset;
+    increaseOffset() {
+        this.offset += this.limit;
     }
 }
 
 export const MyAlbumsStoreImpl = new MyAlbumsStore(8);
-
-autorun(() => {
-    if (MyAlbumsStoreImpl.needFetching) {
-        MyAlbumsStoreImpl.getAlbums(MyAlbumsStoreImpl.offset).finally(() => MyAlbumsStoreImpl.setFetching(false));
-    }
-});

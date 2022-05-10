@@ -3,32 +3,47 @@ import {PlaylistsTransport} from "../Services/PlaylistsTransport";
 import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IPlaylist} from "./Models/IPlaylist";
 
-class MyPlaylistsStore {
+export class MyPlaylistsStore {
+    private static _instance: MyPlaylistsStore;
+
     currentUserPlaylists: IPlaylist[] = [];
     totalCount: number = 0;
     offset: number = 0;
-    needFetching: boolean = false;
-    isFirstFetching: boolean = true;
+    needFetching: boolean = true;
 
     readonly limit: number;
 
     constructor(limit: number) {
         this.limit = limit;
+
         makeObservable(this, {
             currentUserPlaylists: observable,
-            totalCount: observable,
             offset: observable,
             needFetching: observable,
             getCurrentUserPlaylists: action,
             setCurrentUserPlaylists: action,
             setFetching: action,
-            setOffset: action,
-            setTotal: action
-        })
+            increaseOffset: action
+        });
+
+        autorun(() => {
+            if (this.needFetching && this.offset <= this.totalCount) {
+                this.getCurrentUserPlaylists().finally(() => {
+                    this.setFetching(false);
+                    this.increaseOffset();
+                });
+            }
+        });
     }
 
-    async getCurrentUserPlaylists(offset: number) {
-        await PlaylistsTransport.getCurrentUserPlaylists(this.limit, offset).then(playlists => {
+    static get instance() {
+        if (!this._instance)
+            this._instance = new MyPlaylistsStore(15);
+        return this._instance;
+    }
+
+    async getCurrentUserPlaylists() {
+        await PlaylistsTransport.getCurrentUserPlaylists(this.limit, this.offset).then(playlists => {
             this.setCurrentUserPlaylists(playlists.items.map(item => ({
                 id: item.id,
                 isCollaborative: item.collaborative,
@@ -43,9 +58,8 @@ class MyPlaylistsStore {
                 tracksCount: item.tracks.total,
                 followersCount: item.followers?.total ?? 0
             })));
-            if (playlists.next != null) {
+            if (playlists.previous === null) {
                 this.setTotal(playlists.total);
-                this.setOffset(offset + this.limit);
             }
         });
     }
@@ -62,14 +76,7 @@ class MyPlaylistsStore {
         this.totalCount = total;
     }
 
-    setOffset(offset: number) {
-        this.offset = offset;
+    increaseOffset() {
+        this.offset += this.limit;
     }
 }
-
-export const MyPlaylistsStoreImpl = new MyPlaylistsStore(8);
-
-autorun(() => {
-    if (MyPlaylistsStoreImpl.needFetching)
-        MyPlaylistsStoreImpl.getCurrentUserPlaylists(MyPlaylistsStoreImpl.offset).finally(() => MyPlaylistsStoreImpl.setFetching(false));
-});

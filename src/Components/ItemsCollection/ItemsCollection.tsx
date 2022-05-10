@@ -1,8 +1,9 @@
-import {observer} from "mobx-react-lite";
 import {PlayButton} from "../PlayButton/PlayButton";
-import React from "react";
-import '../ScrollStyle.css';
+import React, {ForwardedRef, forwardRef} from "react";
+import '../../CommonStyles/ScrollStyle.css';
 import './ItemsCollection.css';
+import {MyPlaylistsStore} from "../../Stores/MyPlaylistsStore";
+import {observer} from "mobx-react-lite";
 
 
 export interface ICollectionItem {
@@ -14,12 +15,13 @@ export interface ICollectionItem {
 
 export interface IItemsCollectionProps {
     items: Array<ICollectionItem>,
-    onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
 }
 
-export const ItemsCollection = observer((props: IItemsCollectionProps) => {
-    return <div className='collectionItems scroll verticalScroll' onScroll={props.onScroll}> {props.items.map(item => {
-        return <div className='collectionItems__collectionItem' key={item.id}>
+export const ItemsCollection = observer(forwardRef((props: IItemsCollectionProps, ref: ForwardedRef<HTMLDivElement>) => {
+    return <div className='collectionItems scroll verticalScroll'> {props.items.map((item, index) => {
+        return <div className='collectionItems__collectionItem' key={item.id}
+                    ref={index === MyPlaylistsStore.instance.currentUserPlaylists.length - 1
+                    && !MyPlaylistsStore.instance.needFetching && MyPlaylistsStore.instance.offset <= MyPlaylistsStore.instance.totalCount ? ref : null}>
             <img className='collectionItem__image' src={item.imageUrl} alt='collectionItemImage'/>
             <PlayButton/>
             <label className='collectionItem__name'>{item.name}</label>
@@ -27,5 +29,5 @@ export const ItemsCollection = observer((props: IItemsCollectionProps) => {
         </div>
     })}
     </div>
-});
+}));
 
