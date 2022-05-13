@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
-
-:root {
+@font-face {
+    font-family: 'Inter-Light';
+    src: local('Inter-Light'),
+    url('/fonts/Inter-Light.ttf') format('ttf');
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter-Light', sans-serif;
     margin: 0;
     color: white;
     height: 100%;
