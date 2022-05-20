@@ -1,3 +1,5 @@
+import {TokensStorage} from "../TokensStorage/TokensStorage";
+
 export class Transport {
     private static Url = 'https://api.spotify.com/v1';
 
@@ -22,20 +24,16 @@ export class Transport {
         let request = body == null ? {
             method: method,
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token') as string}`
+                Authorization: `Bearer ${TokensStorage.accessToken as string}`
             }
         } : {
             method: method,
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token') as string}`
+                Authorization: `Bearer ${TokensStorage.accessToken as string}`
             },
             body: new URLSearchParams(body)
         };
 
-        return fetch(this.Url + url, request).then(response => {
-            if (!response.ok)
-                return Promise.reject(response);
-            return response.json().then(json => toObject(json))
-        });
+        return fetch(this.Url + url, request).then(response => response.ok ? response.json().then(json => toObject(json)) : Promise.reject(response));
     }
 }

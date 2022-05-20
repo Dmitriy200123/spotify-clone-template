@@ -1,13 +1,13 @@
 import {Navigate} from "react-router-dom";
 import * as React from "react";
 import {ReactElement} from "react";
+import {useAuth} from "../../Hooks/useAuth";
+import {LoadingAnimation} from "../LoadingAnimation/LoadingAnimation";
 
 export const AuthCheck: React.FC<{ children: ReactElement }> = ({children}) => {
-    const token = localStorage.getItem('access_token');
+    const authInfo = useAuth();
+    if (authInfo.isLoading)
+        return <LoadingAnimation/>
 
-    if (!token) {
-        return <Navigate to="/login"/>;
-    }
-
-    return children;
+    return authInfo.isAuthorized ? children : <Navigate to="/login"/>;
 };

@@ -2,6 +2,8 @@ import {useSearchParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getAuthorizationToken} from "../../Authorization/Auth";
 import {observer} from "mobx-react-lite";
+import {LoadingAnimation} from "../../Components/LoadingAnimation/LoadingAnimation";
+import {TokensStorage} from "../../TokensStorage/TokensStorage";
 
 export const LoginCallback = observer(() => {
     const [, setToken] = useState('');
@@ -14,8 +16,8 @@ export const LoginCallback = observer(() => {
         getAuthorizationToken(code).then(token => {
             if (mounted) {
                 setToken(token.access_token)
-                localStorage.setItem('access_token', token.access_token);
-                localStorage.setItem('refresh_token', token.refresh_token);
+                TokensStorage.setAccessToken(token.access_token);
+                TokensStorage.setRefreshToken(token.refresh_token);
                 navigate('/', {replace: true});
             }
         })
@@ -25,5 +27,5 @@ export const LoginCallback = observer(() => {
         }
     }, [code, navigate]);
 
-    return null;
+    return <LoadingAnimation/>
 });

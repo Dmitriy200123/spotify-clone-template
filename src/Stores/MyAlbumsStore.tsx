@@ -78,5 +78,3 @@ export class MyAlbumsStore {
         this.offset += this.limit;
     }
 }
-
-export const MyAlbumsStoreImpl = new MyAlbumsStore(8);
