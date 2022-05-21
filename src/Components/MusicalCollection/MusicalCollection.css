@@ -1,4 +1,4 @@
-.collectionItems {
+.musicalCollection {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -9,7 +9,7 @@
     column-gap: 20px;
 }
 
-.collectionItems__collectionItem {
+.musicalCollectionItem {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 8fr 1fr 1fr;
@@ -23,11 +23,11 @@
     border-radius: 10px;
 }
 
-.collectionItems__collectionItem:hover {
+.musicalCollectionItem:hover {
     background-color: #231b1b;
 }
 
-.collectionItem__image {
+.musicalCollectionItem__image {
     align-self: center;
     width: 175px;
     height: 175px;
@@ -42,13 +42,13 @@
     grid-column: 1/2;
 }
 
-.collectionItems__collectionItem:hover .playButton {
+.musicalCollectionItem:hover .playButton {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.collectionItem__name {
+.musicalCollectionItem__name {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;
@@ -60,7 +60,7 @@
     grid-column: 1/2;
 }
 
-.collectionItem__authorName {
+.musicalCollectionItem__authorName {
     text-align: center;
     color: #e2dfdf;
     align-self: flex-start;

@@ -1,14 +1,4 @@
-.sidebar__playlists {
-    margin-top: 12px;
-    height: 60%;
-}
-
-.playlists__label {
-    margin-left: 60px;
-    color: #b3b3b3;
-}
-
-.playlists {
+.playlistNames {
     height: 100%;
     max-height: 100%;
     width: 99%;
@@ -16,17 +6,17 @@
     padding: 0;
 }
 
-.playlists__playlistItem {
-    margin-left: 15px;
+.playlistNamesItem {
+    margin-left: 25px;
     margin-top: 20px;
     list-style-type: none;
 }
 
-.playlist__itemLink {
+.playlistNamesItem__link {
     text-decoration: none;
     color: #b3b3b3;
 }
 
-.playlist__itemLink:hover {
+.playlistNamesItem__link:hover {
     color: white;
 }

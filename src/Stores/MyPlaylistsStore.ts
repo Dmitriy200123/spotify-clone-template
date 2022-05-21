@@ -6,7 +6,7 @@ import {IPlaylist} from "./Models/IPlaylist";
 export class MyPlaylistsStore {
     private static _instance: MyPlaylistsStore;
 
-    currentUserPlaylists: IPlaylist[] = [];
+    playlists: IPlaylist[] = [];
     totalCount: number = 0;
     offset: number = 0;
     needFetching: boolean = true;
@@ -17,11 +17,11 @@ export class MyPlaylistsStore {
         this.limit = limit;
 
         makeObservable(this, {
-            currentUserPlaylists: observable,
+            playlists: observable,
             offset: observable,
             needFetching: observable,
             getCurrentUserPlaylists: action,
-            setCurrentUserPlaylists: action,
+            setPlaylists: action,
             setFetching: action,
             increaseOffset: action
         });
@@ -44,7 +44,7 @@ export class MyPlaylistsStore {
 
     async getCurrentUserPlaylists() {
         await PlaylistsTransport.getCurrentUserPlaylists(this.limit, this.offset).then(playlists => {
-            this.setCurrentUserPlaylists(playlists.items.map(item => ({
+            this.setPlaylists(playlists.items.map(item => ({
                 id: item.id,
                 isCollaborative: item.collaborative,
                 description: item.description,
@@ -64,8 +64,8 @@ export class MyPlaylistsStore {
         });
     }
 
-    setCurrentUserPlaylists(newPlaylists: IPlaylist[]) {
-        this.currentUserPlaylists = [...this.currentUserPlaylists, ...newPlaylists];
+    setPlaylists(newPlaylists: IPlaylist[]) {
+        this.playlists = [...this.playlists, ...newPlaylists];
     }
 
     setFetching(value: boolean) {

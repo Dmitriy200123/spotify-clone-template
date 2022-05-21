@@ -5,7 +5,7 @@ import {ITrackInfo} from "./Models/ITrackInfo";
 export class MyTopTracksStore {
     private static _instance: MyTopTracksStore;
 
-    currentUserTopTracks: ITrackInfo[] = [];
+    tracks: ITrackInfo[] = [];
     totalCount: number = 0;
     offset: number = 0;
     needFetching: boolean = true;
@@ -16,11 +16,11 @@ export class MyTopTracksStore {
         this.limit = limit;
 
         makeObservable(this, {
-            currentUserTopTracks: observable,
+            tracks: observable,
             needFetching: observable,
             offset: observable,
             getCurrentUserTopTracks: action,
-            setCurrenUserTopTracks: action,
+            setTracks: action,
             setFetching: action,
             increaseOffset: action
         });
@@ -43,7 +43,7 @@ export class MyTopTracksStore {
 
     async getCurrentUserTopTracks() {
         await UsersTransport.getCurrentUserTopTracks(this.limit, this.offset).then(tracksInfo => {
-            this.setCurrenUserTopTracks(tracksInfo.items.map(info => ({
+            this.setTracks(tracksInfo.items.map(info => ({
                 id: info.id,
                 name: info.name,
                 imageUrl: info.album.images[0].url,
@@ -54,8 +54,8 @@ export class MyTopTracksStore {
         })
     }
 
-    setCurrenUserTopTracks(tracks: ITrackInfo[]) {
-        this.currentUserTopTracks = [...this.currentUserTopTracks, ...tracks]
+    setTracks(tracks: ITrackInfo[]) {
+        this.tracks = [...this.tracks, ...tracks]
     }
 
     setFetching(needFetching: boolean) {

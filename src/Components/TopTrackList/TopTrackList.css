@@ -5,7 +5,7 @@
     margin-left: 50px;
 }
 
-.topTrackList__trackListItem {
+.trackListItem {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 5fr 1fr;
@@ -20,7 +20,7 @@
     border-radius: 10px;
 }
 
-.topTrackList__trackListItem:hover {
+.trackListItem:hover {
     background-color: #231b1b;
 }
 
@@ -39,7 +39,7 @@
     grid-column: 1/2;
 }
 
-.topTrackList__trackListItem:hover .playButton {
+.trackListItem:hover .playButton {
     display: flex;
     justify-content: center;
     align-items: center;

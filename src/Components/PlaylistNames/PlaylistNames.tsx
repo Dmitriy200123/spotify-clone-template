@@ -5,24 +5,27 @@ import {Link} from "react-router-dom";
 import './PlaylistNames.css';
 import '../../CommonStyles/ScrollStyle.css';
 import {useIntersectionObserver} from "../../Hooks/useIntersectionObserver";
+import {ICollectionItem, ItemsCollection, ScrollDirection} from "../ItemsCollection/ItemsCollection";
+import {needScrollRef} from "../../ScrollRef/needScrollRef";
 
 export const PlaylistNames = observer(() => {
-    const playlistsRef = useIntersectionObserver(() => MyPlaylistsStore.instance.setFetching(true));
+    const needRef = needScrollRef(MyPlaylistsStore.instance);
+    const ref = useIntersectionObserver(() => MyPlaylistsStore.instance.setFetching(true));
 
-    return (
-        <div className='sidebar__playlists'>
-            <label className='playlists__label'>Плейлисты</label>
-            <ul className='playlists scroll verticalScroll'>
-                {
-                    MyPlaylistsStore.instance.currentUserPlaylists.map((playlist, index) =>
-                        <li key={playlist.id} className='playlists__playlistItem'
-                            ref={index === MyPlaylistsStore.instance.currentUserPlaylists.length - 1
-                            && !MyPlaylistsStore.instance.needFetching && MyPlaylistsStore.instance.offset <= MyPlaylistsStore.instance.totalCount ? playlistsRef : null}>
-                            <Link className='playlist__itemLink'
-                                  to={`/collection/playlists/${playlist.id}`}>{playlist.name}</Link>
-                        </li>)
-                }
-            </ul>
-        </div>
-    )
+    const items: Array<ICollectionItem> = MyPlaylistsStore.instance.playlists.map(playlist => ({
+        id: playlist.id,
+        name: playlist.name,
+    }));
+
+    const setChildrenContent = (item: ICollectionItem) => <Link className='playlistNamesItem__link'
+                                                                to=''>{item.name}</Link>;
+
+    return <ItemsCollection items={items}
+                            scrollDirection={ScrollDirection.Vertical}
+                            needSetRef={needRef}
+                            ref={ref}
+                            setChildrenContent={setChildrenContent}
+                            className={'playlistNames'}
+                            childrenClassName={'playlistNamesItem'}
+    />;
 });
