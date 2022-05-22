@@ -1,10 +1,12 @@
 import {action, makeObservable, observable, autorun} from "mobx";
 import {PlaylistsTransport} from "../Services/PlaylistsTransport";
-import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IPlaylist} from "./Models/IPlaylist";
+import {MessageStore} from "./MessageStore";
+import {PlaylistConverter} from "./Converters/PlaylistConverter";
 
 export class MyPlaylistsStore {
     private static _instance: MyPlaylistsStore;
+    private readonly __messageStore: MessageStore;
 
     playlists: IPlaylist[] = [];
     totalCount: number = 0;
@@ -13,8 +15,9 @@ export class MyPlaylistsStore {
 
     readonly limit: number;
 
-    constructor(limit: number) {
+    constructor(limit: number, messageStore: MessageStore) {
         this.limit = limit;
+        this.__messageStore = messageStore;
 
         makeObservable(this, {
             playlists: observable,
@@ -38,30 +41,20 @@ export class MyPlaylistsStore {
 
     static get instance() {
         if (!this._instance)
-            this._instance = new MyPlaylistsStore(15);
+            this._instance = new MyPlaylistsStore(15, MessageStore.instance);
         return this._instance;
     }
 
     async getCurrentUserPlaylists() {
-        await PlaylistsTransport.getCurrentUserPlaylists(this.limit, this.offset).then(playlists => {
-            this.setPlaylists(playlists.items.map(item => ({
-                id: item.id,
-                isCollaborative: item.collaborative,
-                description: item.description,
-                imageUrl: item.images.length !== 0 ? item.images[0].url : NotFoundItemImage,
-                name: item.name,
-                owner: {
-                    id: item.owner.id,
-                    name: item.owner.display_name
-                },
-                isPublic: item.public,
-                tracksCount: item.tracks.total,
-                followersCount: item.followers?.total ?? 0
-            })));
+        try {
+            const playlists = await PlaylistsTransport.getCurrentUserPlaylists(this.limit, this.offset);
+            this.setPlaylists(playlists.items.map(PlaylistConverter.ToPlaylist));
             if (playlists.previous === null) {
                 this.setTotal(playlists.total);
             }
-        });
+        } catch {
+            this.__messageStore.addErrorMessage('Не удалось загрузить плейлисты');
+        }
     }
 
     setPlaylists(newPlaylists: IPlaylist[]) {

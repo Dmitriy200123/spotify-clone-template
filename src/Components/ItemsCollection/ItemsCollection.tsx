@@ -1,18 +1,8 @@
 import React, {ForwardedRef, forwardRef, ReactElement} from "react";
 import '../../CommonStyles/ScrollStyle.css';
 import '../MusicalCollection/MusicalCollection.css';
-
-export interface ICollectionItem {
-    id: string,
-    name: string,
-    imageUrl?: string,
-    authorName?: string,
-}
-
-export enum ScrollDirection {
-    Vertical,
-    Horizontal
-}
+import {ICollectionItem} from "./ICollectionItem";
+import {ScrollDirection} from "./ScrollDirection";
 
 export interface IItemsCollectionProps {
     items: Array<ICollectionItem>,

@@ -1,10 +1,12 @@
 import {action, autorun, makeObservable, observable} from "mobx";
 import {AlbumsTransport} from "../Services/AlbumsTransport";
-import NotFoundItemImage from '../Images/no-found-item-image.jpg';
 import {IAlbum} from "./Models/IAlbum";
+import {MessageStore} from "./MessageStore";
+import {AlbumConverter} from "./Converters/AlbumConverter";
 
 export class MyAlbumsStore {
     private static _instance: MyAlbumsStore;
+    private readonly __messageStore: MessageStore;
 
     albums: IAlbum[] = [];
     totalCount: number = 0;
@@ -13,8 +15,9 @@ export class MyAlbumsStore {
 
     readonly limit: number;
 
-    constructor(limit: number) {
+    constructor(limit: number, messageStore: MessageStore) {
         this.limit = limit;
+        this.__messageStore = messageStore;
 
         makeObservable(this, {
             albums: observable,
@@ -38,28 +41,20 @@ export class MyAlbumsStore {
 
     static get instance() {
         if (!this._instance)
-            this._instance = new MyAlbumsStore(8);
+            this._instance = new MyAlbumsStore(8, MessageStore.instance);
         return this._instance;
     }
 
     async getAlbums() {
-        await AlbumsTransport.getMyAlbums(this.limit, this.offset).then(albumsInfo => {
-            this.setAlbums(albumsInfo.items.map(info => {
-                return {
-                    id: info.album.id,
-                    name: info.album.name,
-                    imageUrl: info.album.images.length !== 0 ? info.album.images[0].url : NotFoundItemImage,
-                    totalTracks: info.album.total_tracks,
-                    artists: info.album.artists.map(artist => (
-                        {
-                            name: artist.name
-                        }))
-                }
-            }));
+        try {
+            const albumsInfo = await AlbumsTransport.getMyAlbums(this.limit, this.offset);
+            this.setAlbums(albumsInfo.items.map(AlbumConverter.ToAlbum));
             if (albumsInfo.previous === null) {
                 this.setTotal(albumsInfo.total);
             }
-        })
+        } catch {
+            this.__messageStore.addErrorMessage('Не удалось загрузить альбомы');
+        }
     }
 
     setAlbums(albums: IAlbum[]) {

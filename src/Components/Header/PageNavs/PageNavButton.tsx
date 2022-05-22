@@ -2,16 +2,8 @@ import * as React from "react";
 import {useNavigate} from "react-router-dom";
 import './PageButtonStyle.css';
 import {observer} from "mobx-react-lite";
-
-export enum PageNavDirection {
-    Previous,
-    Next,
-}
-
-export interface IPageNavButtonProps {
-    pageNavDirection: PageNavDirection,
-    label: string,
-}
+import {PageNavDirection} from "./PageNavDirection";
+import {IPageNavButtonProps} from "./IPageNavButtonProps";
 
 export const PageNavButton = observer((props: IPageNavButtonProps) => {
     const navigate = useNavigate();

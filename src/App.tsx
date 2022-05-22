@@ -7,8 +7,11 @@ import {LoginCallback} from "./Pages/LoginPages/LoginCallback";
 import {AuthCheck} from "./Components/AuthCheck/AuthCheck";
 import {MusicCollectionPage} from "./Pages/MusicCollectionPages/MusicCollectionPage";
 import {CollectionType} from "./Pages/MusicCollectionPages/CollectionType";
+import {MessageStore} from "./Stores/MessageStore";
+import {Messages} from "./Components/Messages/Messages";
+import {observer} from "mobx-react-lite";
 
-export const App = () => {
+export const App = observer(() => {
     return (
         <Router>
             <div className="App">
@@ -23,7 +26,8 @@ export const App = () => {
                            element={<AuthCheck><MusicCollectionPage
                                collectionType={CollectionType.Albums}/></AuthCheck>}/>
                 </Routes>
+                {MessageStore.instance.messages.length !== 0 && <Messages/>}
             </div>
         </Router>
     );
-};
+});

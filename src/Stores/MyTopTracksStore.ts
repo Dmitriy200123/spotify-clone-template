@@ -1,9 +1,12 @@
 import {action, autorun, makeObservable, observable} from "mobx";
 import {UsersTransport} from "../Services/UsersTransport";
 import {ITrackInfo} from "./Models/ITrackInfo";
+import {MessageStore} from "./MessageStore";
+import {TrackInfoConverter} from "./Converters/TrackInfoConverter";
 
 export class MyTopTracksStore {
     private static _instance: MyTopTracksStore;
+    private readonly __messageStore: MessageStore;
 
     tracks: ITrackInfo[] = [];
     totalCount: number = 0;
@@ -12,8 +15,9 @@ export class MyTopTracksStore {
 
     readonly limit: number;
 
-    constructor(limit: number) {
+    constructor(limit: number, messageStore: MessageStore) {
         this.limit = limit;
+        this.__messageStore = messageStore;
 
         makeObservable(this, {
             tracks: observable,
@@ -37,21 +41,20 @@ export class MyTopTracksStore {
 
     static get instance() {
         if (!this._instance)
-            this._instance = new MyTopTracksStore(10);
+            this._instance = new MyTopTracksStore(10, MessageStore.instance);
         return this._instance;
     }
 
     async getCurrentUserTopTracks() {
-        await UsersTransport.getCurrentUserTopTracks(this.limit, this.offset).then(tracksInfo => {
-            this.setTracks(tracksInfo.items.map(info => ({
-                id: info.id,
-                name: info.name,
-                imageUrl: info.album.images[0].url,
-            })));
+        try {
+            const tracksInfo = await UsersTransport.getCurrentUserTopTracks(this.limit, this.offset);
+            this.setTracks(tracksInfo.items.map(TrackInfoConverter.ToTrackInfo));
             if (tracksInfo.previous === null) {
                 this.setTotal(tracksInfo.total);
             }
-        })
+        } catch {
+            this.__messageStore.addErrorMessage('Не удалось загрузить любимые треки')
+        }
     }
 
     setTracks(tracks: ITrackInfo[]) {

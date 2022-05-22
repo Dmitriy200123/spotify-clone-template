@@ -3,8 +3,8 @@ import * as React from "react";
 import "./Header.css"
 import {ProfileMenu} from "./ProfileMenu/ProfileMenu";
 import {PageNavButton} from "./PageNavs/PageNavButton";
-import {PageNavDirection} from "./PageNavs/PageNavButton";
 import {LogoutButton} from "./LogoutButton/LogoutButton";
+import {PageNavDirection} from "./PageNavs/PageNavDirection";
 
 export const Header = observer(() => {
     return <header className="header">

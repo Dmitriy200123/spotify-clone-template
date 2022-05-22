@@ -5,7 +5,7 @@ import {ProfileMenu} from "./ProfileMenu/ProfileMenu";
 import {LogoutButton} from "./LogoutButton/LogoutButton";
 import './PageNavs/PageButtonStyle.css';
 import {PageNavButton} from "./PageNavs/PageNavButton";
-import {PageNavDirection} from "./PageNavs/PageNavButton"
+import {PageNavDirection} from "./PageNavs/PageNavDirection";
 
 export const MyCollectionHeader = observer(() => {
     return <header className="header">

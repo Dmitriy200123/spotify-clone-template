@@ -1,5 +1,5 @@
 import {loginUrl} from '../../Authorization/LoginUrl';
-import SpotifyLogo from './spotify-logo.svg';
+import SpotifyLogo from '../../Images/spotify-logo.svg';
 import './LoginPage.css';
 
 export const LoginPage = () => {

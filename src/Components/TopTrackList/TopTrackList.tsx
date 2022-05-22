@@ -5,8 +5,10 @@ import '../../CommonStyles/ScrollStyle.css';
 import {PlayButton} from "../PlayButton/PlayButton";
 import {useIntersectionObserver} from "../../Hooks/useIntersectionObserver";
 import {MyTopTracksStore} from "../../Stores/MyTopTracksStore";
-import {ICollectionItem, ItemsCollection, ScrollDirection} from "../ItemsCollection/ItemsCollection";
 import {needScrollRef} from "../../ScrollRef/needScrollRef";
+import {ICollectionItem} from "../ItemsCollection/ICollectionItem";
+import {ScrollDirection} from "../ItemsCollection/ScrollDirection";
+import {ItemsCollection} from "../ItemsCollection/ItemsCollection";
 
 export const TopTrackList = observer(() => {
     const needSetRef = needScrollRef(MyTopTracksStore.instance);

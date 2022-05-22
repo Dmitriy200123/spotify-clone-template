@@ -21,19 +21,24 @@ export class Transport {
     }
 
     private static fetch<T>(method: string, url: string, toObject: (json: any) => T, body: {} | null = null): Promise<T> {
-        let request = body == null ? {
-            method: method,
-            headers: {
-                Authorization: `Bearer ${TokensStorage.accessToken as string}`
-            }
-        } : {
-            method: method,
-            headers: {
-                Authorization: `Bearer ${TokensStorage.accessToken as string}`
-            },
-            body: new URLSearchParams(body)
-        };
 
-        return fetch(this.Url + url, request).then(response => response.ok ? response.json().then(json => toObject(json)) : Promise.reject(response));
+        try {
+            const request = body == null ? {
+                method: method,
+                headers: {
+                    Authorization: `Bearer ${TokensStorage.accessToken as string}`
+                }
+            } : {
+                method: method,
+                headers: {
+                    Authorization: `Bearer ${TokensStorage.accessToken as string}`
+                },
+                body: new URLSearchParams(body)
+            };
+
+            return fetch(this.Url + url, request).then(response => response.ok ? response.json().then(json => toObject(json)) : Promise.reject(response));
+        } catch {
+            return Promise.reject();
+        }
     }
 }
