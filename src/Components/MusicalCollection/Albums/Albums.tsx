@@ -1,11 +1,13 @@
-import {ICollectionItem, ItemsCollection, ScrollDirection} from "../ItemsCollection/ItemsCollection";
-import {useIntersectionObserver} from "../../Hooks/useIntersectionObserver";
-import {MyAlbumsStore} from "../../Stores/MyAlbumsStore";
+import {useIntersectionObserver} from "../../../Hooks/useIntersectionObserver";
+import {MyAlbumsStore} from "../../../Stores/MyAlbumsStore";
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {setChildrenContent} from "./setChildrenContent";
-import './MusicalCollection.css';
-import {needScrollRef} from "../../ScrollRef/needScrollRef";
+import {setChildrenContent} from "../setChildrenContent";
+import '../MusicalCollection.css';
+import {needScrollRef} from "../../../ScrollRef/needScrollRef";
+import {ICollectionItem} from "../../ItemsCollection/ICollectionItem";
+import {ScrollDirection} from "../../ItemsCollection/ScrollDirection";
+import {ItemsCollection} from "../../ItemsCollection/ItemsCollection";
 
 export const Albums = observer(() => {
     const needSetRef = needScrollRef(MyAlbumsStore.instance);

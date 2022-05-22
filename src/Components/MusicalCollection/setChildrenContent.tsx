@@ -1,6 +1,6 @@
-import {ICollectionItem} from "../ItemsCollection/ItemsCollection";
 import {PlayButton} from "../PlayButton/PlayButton";
 import React from "react";
+import {ICollectionItem} from "../ItemsCollection/ICollectionItem";
 
 export const setChildrenContent = (item: ICollectionItem) => (
     <>

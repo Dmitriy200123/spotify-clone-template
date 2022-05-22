@@ -6,8 +6,9 @@ import {CollectionType} from './CollectionType';
 import '../../CommonStyles/PageCommonStyle.css';
 import './MusicCollectionPage.css';
 import React from "react";
-import {Playlists} from "../../Components/MusicalCollection/Playlists";
-import {Albums} from "../../Components/MusicalCollection/Albums";
+import {Playlists} from "../../Components/MusicalCollection/Playlists/Playlists";
+import {Albums} from "../../Components/MusicalCollection/Albums/Albums";
+import {PlaylistsViewType} from "../../Components/MusicalCollection/Playlists/PlaylistsViewType";
 
 export const MusicCollectionPage = (props: IMusicCollectionPageProps) => {
     return <div className='page'>
@@ -20,7 +21,7 @@ export const MusicCollectionPage = (props: IMusicCollectionPageProps) => {
             </>}
             {props.collectionType === CollectionType.Playlists && <>
                 <h1 className='musicCollectionContent__title'>Плейлисты</h1>
-                <Playlists/>
+                <Playlists viewType={PlaylistsViewType.Card}/>
             </>}
         </main>
         <Footer/>
