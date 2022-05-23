@@ -1,0 +1,5 @@
+.footer {
+    background: #231b1b linear-gradient(#231b1b, #000000, #070700);
+    grid-column: 1/3;
+    grid-row: 3/4;
+}

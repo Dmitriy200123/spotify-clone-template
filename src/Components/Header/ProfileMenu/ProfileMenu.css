@@ -1,0 +1,26 @@
+.profileMenu {
+    width: 110px;
+    border-radius: 10px;
+    background-color: #231b1b;
+    border: 1px solid #231b1b;
+}
+
+.profileMenu__profileInfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profileInfo__userImage {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-right: 5px;
+}
+
+.profileInfo__userName {
+    color: white;
+}
+
+
